@@ -1,12 +1,8 @@
 // Написать сервис (парсер), который параллельно с сайта ain.ua сохранит в базу пять последних статей, из разных категорий 
 // (структуры DB придумать самому, написать миграции). Также нужно реализовать следующие роуты
-
 // 1) Вывести список статей (заголовок + 300 символов из текста), с пагинацией.
-
 // 2) Просмотр статьи (весь текст + изображения, если есть)
-
 // 3) Подготовить Postmen коллекцию для тестирования.
-
 // Stack: Node JS, Express, ORM-sequelize, PostgreSQL
 
 const express = require('express');
@@ -19,7 +15,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
 const grabber = require('./lib/grabber');
-const reader = require('./lib/reader');
+const getall = require('./lib/getall');
+const article = require('./lib/article');
 const model = require('./lib/model');
 
 app.set("twig options", {strict_variables: false});
@@ -58,7 +55,8 @@ const News = model(sequelize, Sequelize)
 app.get('/parse', (req, res) => grabber(res, News));
 
 //модуль ридер
-app.get('/', (req, res) => reader(res, News));
+app.get('/articles', (req, res) => getall(req, res, News));
+app.get('/articles/:id', (req, res) => article(req, res, News));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
