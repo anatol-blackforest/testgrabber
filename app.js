@@ -58,7 +58,7 @@ const News = model(sequelize, Sequelize)
 app.get('/parse', (req, res) => grabber(res, News));
 
 //модуль ридер
-app.get('/', (req, res) => reader(res));
+app.get('/', (req, res) => reader(res, News));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
