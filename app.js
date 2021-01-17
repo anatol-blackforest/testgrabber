@@ -15,10 +15,6 @@ const getall = require('./lib/getall');
 const article = require('./lib/article');
 const model = require('./lib/model');
 
-app.set("twig options", {strict_variables: false});
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'twig');
-
 //use
 app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
