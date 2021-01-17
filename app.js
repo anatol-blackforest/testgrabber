@@ -9,7 +9,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const logger = require('morgan');
-
+require('dotenv').config()
 const grabber = require('./lib/grabber');
 const getall = require('./lib/getall');
 const article = require('./lib/article');
@@ -24,7 +24,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('postgres', 'postgres', 'postgres', {
+const sequelize = new Sequelize(process.env.DB, process.env.USERNAME, process.env.PASSWORD, {
   host: 'localhost',
   port: 5432,
   dialect: 'postgres',
