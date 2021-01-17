@@ -24,9 +24,9 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize(process.env.DB, process.env.USERNAME, process.env.PASSWORD, {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.USERNAME, process.env.PASSWORD, {
   host: 'localhost',
-  port: 5432,
+  port: process.env.DB_PORT,
   dialect: 'postgres',
   pool: {
     max: 5,
