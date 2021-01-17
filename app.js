@@ -17,7 +17,6 @@ const model = require('./lib/model');
 
 //use
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
 
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.USERNAME, process.env.PASSWORD, {
