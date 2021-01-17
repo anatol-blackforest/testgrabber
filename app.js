@@ -7,12 +7,8 @@
 
 const express = require('express');
 const app = express();
-const Twig = require("twig");
 const path = require('path');
-const favicon = require('serve-favicon');
 const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 
 const grabber = require('./lib/grabber');
 const getall = require('./lib/getall');
